@@ -1,5 +1,4 @@
-# The full neural network code!
-###############################
+#makes life easier by using the mnist data set
 import numpy as np
 import mnist
 from keras.models import Sequential
@@ -19,25 +18,20 @@ test_images = (test_images / 255) - 0.5
 train_images = train_images.reshape((-1, 784))
 test_images = test_images.reshape((-1, 784))
 
-# Build the model.
+# relying on a 2 hidden layor model with 64 neurons each
 model = Sequential([
   Dense(64, activation='relu', input_shape=(784,)),
   Dense(64, activation='relu'),
   Dense(10, activation='softmax'),
 ])
 
-# Compile the model.
-model.compile(
-  optimizer='adam',
-  loss='categorical_crossentropy',
-  metrics=['accuracy'],
-)
+model.compile(optimizer='adam',loss='categorical_crossentropy', metrics=['accuracy'],)
 
 # Train the model.
 model.fit(
   train_images,
   to_categorical(train_labels),
-  epochs=5,
+  epochs=10,
   batch_size=32,
 )
 
@@ -48,16 +42,16 @@ model.evaluate(
 )
 
 # Save the model to disk.
-model.save_weights('model.h5')
+model.save_weights('model_2_64.h5')
 
 # Load the model from disk later using:
 # model.load_weights('model.h5')
 
 # Predict on the first 5 test images.
-predictions = model.predict(test_images[:5])
+#predictions = model.predict(test_images[:5])
 
 # Print our model's predictions.
-print(np.argmax(predictions, axis=1)) # [7, 2, 1, 0, 4]
+#print(predictions) # [7, 2, 1, 0, 4]
 
 # Check our predictions against the ground truths.
-print(test_labels[:5]) # [7, 2, 1, 0, 4]
+#print(test_labels[:5]) # [7, 2, 1, 0, 4]
