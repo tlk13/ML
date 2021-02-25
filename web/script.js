@@ -1,9 +1,14 @@
-"use strict";
+
 /**
  * 1. Image is centered by computing center of a mass.
  * 2. Then it is scale down into 20x20 frame
  * 3. and centered relative to 28x28 window.
  */
+
+const model =  tf.loadLayersModel('https://github.com/tlk13/ML/blob/master/nn/model.json');
+
+
+
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -547,6 +552,14 @@ var Atrament = /** @class */ (function () {
         var data = imgData.data;
         var pixels = [[]];
         console.log(pixels);
+        console.log("hello");
+
+
+
+
+
+
+
         var row = 0;
         var column = 0;
         for (var i_1 = 0; i_1 < originalCanvas.width * originalCanvas.height * 4; i_1 += 4) {
@@ -569,6 +582,7 @@ var Atrament = /** @class */ (function () {
 
         arrr = pixels;
         console.log(arrr);
+        console.log("this is arr")
         var bounded = new ImageData(clampedArray, boundedCanvas.width, boundedCanvas.height);
         boundedCtx.putImageData(bounded, 0, 0);
         boundedCtx.beginPath();

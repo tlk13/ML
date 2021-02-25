@@ -14,9 +14,7 @@ test_labels = mnist.test_labels()
 train_images = (train_images / 255) - 0.5
 test_images = (test_images / 255) - 0.5
 
-# Flatten the images.
-train_images = train_images.reshape((-1, 784))
-test_images = test_images.reshape((-1, 784))
+
 
 # relying on a 2 hidden layor model with 64 neurons each
 model = Sequential([
